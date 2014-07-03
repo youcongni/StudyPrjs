@@ -55,7 +55,7 @@ public class GACfgInfoTest {
 		when(mockProperties.getProperty("implClsNameOfIChromosomeOpt"))
 				.thenReturn("not implsName");
 		gaParameter = gaCfgInfo.getParametersOfGA();
-		String actualImplClsName = gaParameter.getImplClsName();
+		String actualImplClsName = gaParameter.getImplClsNmOfIChrOpt();
 		String expectImplClsName = "not implsName";
 		assertEquals(expectImplClsName, actualImplClsName);
 	}
@@ -104,7 +104,7 @@ public class GACfgInfoTest {
 		gaParameter = gaCfgInfo.getParametersOfGA();
 		int actualChromosomeLen = gaParameter.getChromosomeLength();
 		List<StringBuffer> actualEncoding = gaParameter.getEncodes();
-		String actualImplClsNameOfIChromosomeOpt = gaParameter.getImplClsName();
+		String actualImplClsNameOfIChromosomeOpt = gaParameter.getImplClsNmOfIChrOpt();
 		// 测试断言：
 		assertEquals(expectChromosomeLen, actualChromosomeLen);
 		assertEquals(expectImplClsNameOfIChromosomeOpt,
