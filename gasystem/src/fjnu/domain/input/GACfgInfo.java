@@ -134,10 +134,10 @@ public class GACfgInfo {
 			gaParameters.setEncodes(encodes);
 		}
 		if (iNm == null || iNm.equals("")) {// 采用默认的实现类名
-			String sb = "not implsName";
-			gaParameters.setImplClsName(sb);
+			String sb = "fjnu.domain.chrom.TempChromoseOpt";
+			gaParameters.setImplClsNmOfIChrOpt(sb);
 		} else {
-			gaParameters.setImplClsName(iNm);
+			gaParameters.setImplClsNmOfIChrOpt(iNm);
 		}
 		return gaParameters;
 

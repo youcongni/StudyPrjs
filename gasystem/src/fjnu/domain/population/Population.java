@@ -23,7 +23,16 @@ public class Population {
 	private Random random = null;
 	
 	private List<Chromosome> chromosomes = null;
+	
+	private Chromosome bestChrom =null;
 
+
+	public Chromosome getBestChrom() {
+		//比较各个适应值
+		bestChrom=chromosomes.get(0).copy();
+		
+		return bestChrom;
+	}
 
 	/**
 	 * 构造器：指定初始化GA参数
@@ -72,5 +81,6 @@ public class Population {
 			}
 		}
 	}
+	
 
 }
