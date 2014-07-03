@@ -40,7 +40,7 @@ public class GACfgInfoTest {
 
 	// 测试chromosomeLength参数
 	@Test
-	public void testGetParametersOfGAChrLenIsNull() {
+	public void testGetParametersOfGAChrLenIsNullOrEmpty() {
 
 		when(mockProperties.getProperty("chromosomeLength")).thenReturn(null);
 		gaParameter = gaCfgInfo.getParametersOfGA();
@@ -51,7 +51,7 @@ public class GACfgInfoTest {
 
 	// 测试implClsNameOfIChromosomeOpt参数
 	@Test
-	public void testGetParametersOfGAImplClsIsNull() {
+	public void testGetParametersOfGAImplClsIsNullOrEmpty() {
 		when(mockProperties.getProperty("implClsNameOfIChromosomeOpt"))
 				.thenReturn("not implsName");
 		gaParameter = gaCfgInfo.getParametersOfGA();
@@ -62,7 +62,7 @@ public class GACfgInfoTest {
 
 	// 测试获取编码方案encoding参数
 	@Test
-	public void testGetGAParametersWhenEncodesIsNull() {
+	public void testGetGAParametersWhenEncodesIsNullOrEmpty() {
 		// 测试准备
 		when(mockProperties.getProperty("encoding")).thenReturn(null);
 		// 测试驱动
@@ -82,10 +82,13 @@ public class GACfgInfoTest {
 			}
 		}
 	}
+	
+	////////////////////////还有其它参数未写测试代码
 
 	// 测试配置文件中各项参数不为空的情况；
+	////////////////////////////////参数不全
 	@Test
-	public void testGetGAParametersAreNotNull() {
+	public void testGetGAParametersAreNotNullOrEmpty() {
 		// 测试准备
 		when(mockProperties.getProperty("chromosomeLength")).thenReturn("12");
 		when(mockProperties.getProperty("encoding")).thenReturn("0,1,2");
