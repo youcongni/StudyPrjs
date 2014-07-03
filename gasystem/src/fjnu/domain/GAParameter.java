@@ -41,7 +41,7 @@ public class GAParameter {
 	/**
 	 * 染色体接口的实现类
 	 */
-	private String implClsNameOfChrom;//String
+	private String implClsNmOfIChrOpt;//String
 
 	public List<StringBuffer> getEncodes() {
 		return encodes;
@@ -51,12 +51,12 @@ public class GAParameter {
 		this.encodes = encodes;
 	}
 
-	public String getImplClsName() {
-		return implClsNameOfChrom;
+	public String getImplClsNmOfIChrOpt() {
+		return implClsNmOfIChrOpt;
 	}
 
-	public void setImplClsName(String implClsName) {
-		this.implClsNameOfChrom = implClsName;
+	public void setImplClsNmOfIChrOpt(String implClsName) {
+		this.implClsNmOfIChrOpt = implClsName;
 	}
 
 	public int getChromosomeLength() {
