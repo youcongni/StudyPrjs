@@ -89,6 +89,8 @@ public class ChromosomeTest {
 
 		Chromosome realhromosome = new Chromosome(mockRandom, mockGaParameter);
 		realhromosome.mutate(1);
+		
+		//////断言部分没有
 
 	}
 
