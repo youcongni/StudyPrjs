@@ -157,7 +157,7 @@ public class GACfgInfo {
 		String maxIteratorNum = properties.getProperty("maxIteratorNum");
 		String populationSize = properties.getProperty("populationSize");
 		String encodesStr = properties.getProperty("encoding");
-		String iNm = properties.getProperty("implClsNameOfIChromosomeOpt");
+		String implClsNmOfIChrOpt = properties.getProperty("implClsNameOfIChromosomeOpt");
 		String maxFitness = properties.getProperty("maxFitness");
 		// 根据配置文件中的值，进行设置GA参数
 		if ((chromosomeLength == null) || chromosomeLength.equals("")) {// 若是不为空，直接设置值；若为空，则获取默认值；
@@ -215,11 +215,11 @@ public class GACfgInfo {
 			}
 			gaParameters.setEncodes(encodes);
 		}
-		if (iNm == null || iNm.equals("")) {// 采用默认的实现类名
+		if (implClsNmOfIChrOpt == null || implClsNmOfIChrOpt.equals("")) {// 采用默认的实现类名
 			String sb = "not implsName";
 			gaParameters.setImplClsName(sb);
 		} else {
-			gaParameters.setImplClsName(iNm);
+			gaParameters.setImplClsName(implClsNmOfIChrOpt);
 		}
 		return gaParameters;
 	}
