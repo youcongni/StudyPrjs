@@ -1,4 +1,4 @@
-package fjnu.domain;
+package fjnu.domain.input;
 
 import java.util.List;
 

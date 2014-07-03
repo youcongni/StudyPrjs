@@ -1,7 +1,10 @@
-package fjnu.domain;
+package fjnu.domain.population;
 
 import java.util.List;
 import java.util.Random;
+
+import fjnu.domain.chrom.Chromosome;
+import fjnu.domain.input.GAParameter;
 
 /**
  * 该类为种群类，其主要封装了有关种群的操作：初始化、变异操作、选择操作、交叉操作；

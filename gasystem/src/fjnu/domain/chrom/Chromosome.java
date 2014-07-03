@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
-import fjnu.domain.GACfgInfo;
-import fjnu.domain.GAParameter;
 import fjnu.domain.IServices.IChromosomeServices;
+import fjnu.domain.input.GACfgInfo;
+import fjnu.domain.input.GAParameter;
 
 /**
  * 该类为染色体类，主要封装了GA算法中的染色体的个体变异、求解适应值的操作；染色体需要向外界展示个体编码，
