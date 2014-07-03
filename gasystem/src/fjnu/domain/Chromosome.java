@@ -120,5 +120,18 @@ public class Chromosome {// 染色体
 		return fitness;
 	}
 
+	public Chromosome copy(){
+		Chromosome  newChromosome=new Chromosome();
+		
+		List<StringBuffer> newEncodes=new ArrayList<StringBuffer>();
+		
+		int len=encodes.size();
+		for(int i=0;i<len;i++){
+			String tempStr=encodes.get(i).toString();
+			newEncodes.add(new StringBuffer(tempStr));
+		}
+		
+		return newChromosome;
+	}
 	
 }
