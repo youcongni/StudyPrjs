@@ -69,7 +69,7 @@ public class ChromosomeTest {
 	 * @throws InstantiationException 
 	 */
 	@Test
-	public void testChromosomeMutateWhenPosIsStart() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public void testChromosomeMutateWhenPosIsStart()  {
 		// 测试准备
 		List<StringBuffer> codes = new ArrayList<StringBuffer>();
 		codes.add(new StringBuffer("1"));
@@ -87,9 +87,8 @@ public class ChromosomeTest {
 		when(mockRandom.nextInt(codes.size())).thenReturn(1);// 模拟变异的位置结尾
 		when(mockRandom.nextInt(encodes.size())).thenReturn(2);// 模拟产生的目标码是2
 
-		Chromosome realhromosome = new Chromosome(mockRandom, mockGaParameter,
-				null);
-		realhromosome.mutate(1, codes, mockGaParameter);
+		Chromosome realhromosome = new Chromosome(mockRandom, mockGaParameter);
+		realhromosome.mutate(1);
 
 	}
 
