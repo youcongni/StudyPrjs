@@ -1,6 +1,6 @@
 package fjnu.domain;
 
-import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -156,7 +156,7 @@ public class GACfgInfo {
 		String mutateProbabilty = properties.getProperty("mutateProbabilty");
 		String maxIteratorNum = properties.getProperty("maxIteratorNum");
 		String populationSize = properties.getProperty("populationSize");
-		String encodings = properties.getProperty("encoding");
+		String encodesStr = properties.getProperty("encoding");
 		String iNm = properties.getProperty("implClsNameOfIChromosomeOpt");
 		String maxFitness = properties.getProperty("maxFitness");
 		// 根据配置文件中的值，进行设置GA参数
@@ -201,12 +201,12 @@ public class GACfgInfo {
 		}
 		// 借助List<StringBuffer>获取染色体编码；针对encodings，若是不为空，直接设置为配置文件的值；若为空，则获取默认值0,1
 		List<StringBuffer> encodes = new ArrayList<StringBuffer>();
-		if (encodings == null || encodings.equals("")) {
+		if (encodesStr == null || encodesStr.equals("")) {
 			encodes.add(new StringBuffer("0"));
 			encodes.add(new StringBuffer("1"));
 			gaParameters.setEncodes(encodes);
 		} else {
-			String[] codes = encodings.split(",");
+			String[] codes = encodesStr.split(",");
 			int len = codes.length;
 			for (int i = 0; i < len; i++) {
 				StringBuffer encoding = new StringBuffer();
