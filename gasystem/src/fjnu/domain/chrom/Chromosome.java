@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
-import fjnu.domain.IServices.IChromosomeServices;
 import fjnu.domain.input.GACfgInfo;
 import fjnu.domain.input.GAParameter;
 
