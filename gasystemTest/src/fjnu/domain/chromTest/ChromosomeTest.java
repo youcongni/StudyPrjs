@@ -1,4 +1,4 @@
-package fjnu.domainTest;
+package fjnu.domain.chromTest;
 
 import static org.mockito.Mockito.*;//
 
@@ -10,9 +10,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import fjnu.domain.Chromosome;
-import fjnu.domain.GAParameter;
-import fjnu.domain.IChromosomeOpt;
+import fjnu.domain.chrom.Chromosome;
+import fjnu.domain.chrom.IChromosomeOpt;
+import fjnu.domain.input.GAParameter;
 
 public class ChromosomeTest {
 

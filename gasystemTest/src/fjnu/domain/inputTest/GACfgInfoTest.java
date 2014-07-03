@@ -1,4 +1,4 @@
-package fjnu.domainTest;
+package fjnu.domain.inputTest;
 
 import static org.junit.Assert.*;
 
@@ -11,8 +11,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import fjnu.domain.GACfgInfo;
-import fjnu.domain.GAParameter;
+import fjnu.domain.input.GACfgInfo;
+import fjnu.domain.input.GAParameter;
 
 import static org.mockito.Mockito.*;
 

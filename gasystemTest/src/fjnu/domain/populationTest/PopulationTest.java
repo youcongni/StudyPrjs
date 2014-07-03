@@ -1,4 +1,4 @@
-package fjnu.domainTest;
+package fjnu.domain.populationTest;
 
 import static org.junit.Assert.*;
 
@@ -10,9 +10,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import fjnu.domain.Chromosome;
-import fjnu.domain.GAParameter;
-import fjnu.domain.Population;
+import fjnu.domain.chrom.Chromosome;
+import fjnu.domain.input.GAParameter;
+import fjnu.domain.population.Population;
 
 import static org.mockito.Mockito.*;
 
