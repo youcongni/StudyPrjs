@@ -8,11 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+
+
 public class GACfgInfo {
 
 	private Properties properties = null;
+	// 属性文件的位置
+	private static final String CONFIGFILENAME = "src/fjnu/domain/GAParameter.properties";
 
-	
+	// 单例对象
+	private static GACfgInfo uniqueInstance = null;
+
 	public GACfgInfo(Properties properties) {
 		this.properties = properties;
 	}
@@ -23,37 +29,42 @@ public class GACfgInfo {
 	 * @param propertyFilePath
 	 *            :properties文件的地址;
 	 */
-	public GACfgInfo(String propertyFilePath) {
-		super();
+	public GACfgInfo() {
+		// 属性集合对象
 		properties = new Properties();
+		// 属性文件输入流
 		FileInputStream fis = null;
 		try {
-			fis = new FileInputStream(new File(propertyFilePath));
+
+			fis = new FileInputStream(CONFIGFILENAME);
+			// 将属性文件流装载到Properties对象中
 			properties.load(fis);
 			fis.close();
-		} catch (FileNotFoundException e) {
-			System.err.println("文件未发现的异常！");
-			e.printStackTrace();
-		} catch (IOException e) {
-			System.err.println("IO 异常！");
-			e.printStackTrace();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
 		}
-	}
 
-	public static GAParameter getGAParameters() {
-		// 构造文件配置类
-		String pathname = "src/fjnu/domain/GAParameter.properties";
-		Properties properties = new Properties();
-		File file = new File(pathname);
-		FileInputStream inStream;
-		try {
-			inStream = new FileInputStream(file);
-			properties.load(inStream);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+	}
+	
+	public static GACfgInfo getInstance() {
+		if (uniqueInstance == null) {
+			uniqueInstance = new GACfgInfo();
 		}
+		return uniqueInstance;
+	}
+	
+	public static GACfgInfo getInstance(Properties properties) {
+		if (uniqueInstance == null) {
+			uniqueInstance = new GACfgInfo(properties);
+		}
+		return uniqueInstance;
+	}
+	
+	
+	//获取参数
+	 public  GAParameter getGAParameters() {
 		// 获取配置文件中的参数；
 		GAParameter gaParameters = new GAParameter();// 实例化一个GAParameter对象，用于保存GAParameter参数；
 		String chromosomeLength = properties.getProperty("chromosomeLength");
@@ -213,21 +224,4 @@ public class GACfgInfo {
 		return gaParameters;
 	}
 
-	public static void main(String[] args) {
-		// String propertyFilePath = "src/fjnu/domain/GAParameter.properties";
-		// GACfgInfo configurationInfo = new GACfgInfo(propertyFilePath);
-		GAParameter gaParameters = GACfgInfo.getGAParameters();
-		System.out.println(gaParameters.getChromosomeLength() + "--->"
-				+ gaParameters.getMaxIteratorNum() + "-->"
-				+ gaParameters.getMaxFitness() + "-->"
-				+ gaParameters.getMutateProbabilty() + "-->"
-				+ gaParameters.getPopulationSize() + "-->"
-				+ gaParameters.getCrossoverProbability() + "-->"
-				+ gaParameters.getImplClsName());
-		List<StringBuffer> sbList = gaParameters.getEncodes();
-		int size = sbList.size();
-		for (int i = 0; i < size; i++) {
-			System.out.print(sbList.get(i).toString());
-		}
-	}
 }
