@@ -47,8 +47,7 @@ public class Population {
 	}
 
 	public Population() {
-		this.random = random;
-		this.parameter = GACfgInfo.getInstance().getGAParameters();
+		this.parameter = GACfgInfo.getInstance().getParametersOfGA();
 		initializePopulation() ;
 	}
 
@@ -63,7 +62,6 @@ public class Population {
 		this.mutateProbility = parameter.getMutateProbabilty();
 		
 		for (int i = 0; i < popSize; i++) {
-			
 			Chromosome chromosome=new Chromosome();
 			chromosomes.add(chromosome);
 		}

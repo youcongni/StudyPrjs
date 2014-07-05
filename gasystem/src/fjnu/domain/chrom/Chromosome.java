@@ -48,7 +48,7 @@ public class Chromosome {// 染色体
 	 *            长度，便是染色体的长度；
 	 */
 	public Chromosome() {
-		gaParameter = GACfgInfo.getInstance().getGAParameters();
+		gaParameter = GACfgInfo.getInstance().getParametersOfGA();
 		this.random = new Random();
 		initialChromosome();
 	}

@@ -41,7 +41,8 @@ public class GAParameter {
 	/**
 	 * 染色体操作接口的实现类
 	 */
-	private String implClsNmOfIChrOpt;//
+	private String implClsNmOfIChrOpt;// 染色体接口的实现类
+	
 	
 
 	public List<StringBuffer> getEncodes() {
