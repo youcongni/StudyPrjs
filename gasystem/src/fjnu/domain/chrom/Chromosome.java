@@ -124,7 +124,7 @@ public class Chromosome {// 染色体
 			newEncodes.add(new StringBuffer(tempStr));
 		}
 
-		return newChromosome;
+		return newChromosome; 
 	}
 
 	public List<StringBuffer> getEncodes() {
