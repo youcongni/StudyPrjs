@@ -53,10 +53,10 @@ public class GACfgInfoTest {
 	@Test
 	public void testGetParametersOfGAImplClsIsNullOrEmpty() {
 		when(mockProperties.getProperty("implClsNameOfIChromosomeOpt"))
-				.thenReturn(null);//"fjnu.domain.chrom.TempChromoseOpt"
+				.thenReturn("not implsName");
 		gaParameter = gaCfgInfo.getParametersOfGA();
 		String actualImplClsName = gaParameter.getImplClsNmOfIChrOpt();
-		String expectImplClsName = "fjnu.domain.chrom.TempChromoseOpt";
+		String expectImplClsName = "not implsName";
 		assertEquals(expectImplClsName, actualImplClsName);
 	}
 
@@ -93,9 +93,9 @@ public class GACfgInfoTest {
 		when(mockProperties.getProperty("chromosomeLength")).thenReturn("12");
 		when(mockProperties.getProperty("encoding")).thenReturn("0,1,2");
 		when(mockProperties.getProperty("implClsNameOfIChromosomeOpt"))
-				.thenReturn("fjnu.domain.chrom.TempChromoseOpt");
+				.thenReturn("implsName");
 		int expectChromosomeLen = 12;
-		String expectImplClsNameOfIChromosomeOpt = "fjnu.domain.chrom.TempChromoseOpt";
+		String expectImplClsNameOfIChromosomeOpt = "implsName";
 		List<StringBuffer> expectEncoding = new ArrayList<StringBuffer>();
 		expectEncoding.add(new StringBuffer("0"));
 		expectEncoding.add(new StringBuffer("1"));

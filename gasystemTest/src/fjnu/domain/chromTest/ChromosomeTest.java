@@ -209,6 +209,7 @@ public class ChromosomeTest {
 		mockCodes.add(new StringBuffer("1"));
 		mockCodes.add(new StringBuffer("2"));
 
+		// 
 		when(mockChromosomeOpt.calcuFitness(mockCodes)).thenReturn(1.0);
 
 		when(mockGaParameter.getEncodes()).thenReturn(mockCodes);
