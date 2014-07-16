@@ -86,19 +86,9 @@ public class ChromosomeTest {
 							actualEncodes.get(i).toString());
 				}
 			}
-		} catch (SecurityException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		} catch (NoSuchFieldException e) {
-			e.printStackTrace();
-		}
+		} 
 
 	}
 
@@ -124,6 +114,9 @@ public class ChromosomeTest {
 		codes.add(new StringBuffer("0"));
 		codes.add(new StringBuffer("1"));
 		codes.add(new StringBuffer("2"));
+		encodes.add(new StringBuffer("2"));
+
+		mockGaParameter = mock(GAParameter.class);
 
 		// 模拟获取编码方案
 		when(mockRandom.nextInt(4)).thenReturn(0);// 模拟变异的位置开始
@@ -166,12 +159,69 @@ public class ChromosomeTest {
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		}
+		Chromosome realhromosome = new Chromosome(mockRandom, mockGaParameter);
+		realhromosome.mutate(1);
+
+	}
+	// ////////////测试中间、结尾的变异类似开头变异
+	@Test
+	public void testChromosomeMutateWhenPosIsEnd()
+			throws InstantiationException, IllegalAccessException,
+			ClassNotFoundException {
+		// 模拟真实值，即编码串“1011”
+		List<StringBuffer> value = new ArrayList<StringBuffer>();
+		value.add(new StringBuffer("1"));
+		value.add(new StringBuffer("0"));
+		value.add(new StringBuffer("1"));
+		value.add(new StringBuffer("1"));
+		// 模拟真实值，即编码方案“012”
+		List<StringBuffer> encodes = new ArrayList<StringBuffer>();
+		StringBuffer sbBuffer1 = new StringBuffer("0");
+		StringBuffer sbBuffer2 = new StringBuffer("1");
+		StringBuffer sbBuffer3 = new StringBuffer("2");
+		encodes.add(sbBuffer1);
+		encodes.add(sbBuffer2);
+		encodes.add(sbBuffer3);
+	// 染色体适应度的测试
+		mockGaParameter = mock(GAParameter.class);
+
+		when(mockGaParameter.getEncodes()).thenReturn(encodes);// 模拟获取编码方案
+		when(mockRandom.nextInt(value.size())).thenReturn(3);// 模拟变异的位置结尾
+		when(mockRandom.nextInt(encodes.size())).thenReturn(2);// 模拟产生的目标码是2
+
+		Chromosome realhromosome = new Chromosome(mockRandom, mockGaParameter);
+		realhromosome.mutate(1);
 
 	}
 
-	// ////////////测试中间、结尾的变异类似开头变异
+	@Test
+	public void testChromosomeMutateWhenPosIsMedia(){
 
-	// 染色体适应度的测试
+		// 模拟真实值，即编码串“1011”
+		List<StringBuffer> value = new ArrayList<StringBuffer>();
+		value.add(new StringBuffer("1"));
+		value.add(new StringBuffer("0"));
+		value.add(new StringBuffer("1"));
+		value.add(new StringBuffer("1"));
+		// 模拟真实值，即编码方案“012”
+		List<StringBuffer> encodes = new ArrayList<StringBuffer>();
+		StringBuffer sbBuffer1 = new StringBuffer("0");
+		StringBuffer sbBuffer2 = new StringBuffer("1");
+		StringBuffer sbBuffer3 = new StringBuffer("2");
+		encodes.add(sbBuffer1);
+		encodes.add(sbBuffer2);
+		encodes.add(sbBuffer3);
+
+		mockGaParameter = mock(GAParameter.class);
+
+		when(mockGaParameter.getEncodes()).thenReturn(encodes);// 模拟获取编码方案
+		when(mockRandom.nextInt(value.size())).thenReturn(2);// 模拟变异的位置
+		when(mockRandom.nextInt(encodes.size())).thenReturn(2);// 模拟产生的目标码是2
+
+		Chromosome realhromosome = new Chromosome(mockRandom, mockGaParameter);
+		realhromosome.mutate(1);
+
+	}
 	@Test
 	public void testChromosomeCalculateFitness() {
 

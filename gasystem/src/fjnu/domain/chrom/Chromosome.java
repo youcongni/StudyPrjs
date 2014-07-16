@@ -142,5 +142,4 @@ public class Chromosome {// 染色体
 	public void setCodes(List<StringBuffer> codes) {
 		this.codes = codes;
 	}
-	
 }
