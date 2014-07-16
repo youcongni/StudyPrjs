@@ -77,6 +77,8 @@ public class GACfgInfo {
 		String implClsNmOfIChrOpt = properties
 				.getProperty("implClsNameOfIChromosomeOpt");
 		String maxFitness = properties.getProperty("maxFitness");
+		
+		String implClsNameOfIPopulationOpt = properties.getProperty("implClsNameOfIPopulationOpt");
 		// 根据配置文件中的值，进行设置GA参数
 		if ((chromosomeLength == null) || chromosomeLength.equals("")) {// 若是不为空，直接设置值；若为空，则获取默认值；
 			gaParameters.setChromosomeLength(10);
@@ -138,6 +140,12 @@ public class GACfgInfo {
 			gaParameters.setImplClsNmOfIChrOpt(sb);
 		} else {
 			gaParameters.setImplClsNmOfIChrOpt(implClsNmOfIChrOpt);
+		}
+		if (implClsNameOfIPopulationOpt == null || implClsNameOfIPopulationOpt.equals("")) {// 采用默认的实现类名
+			String sb = "fjnu.domain.population.DefaultPopulationOpt";
+			gaParameters.setImplClsNameOfIPopulationOpt(sb);
+		} else {
+			gaParameters.setImplClsNameOfIPopulationOpt(implClsNameOfIPopulationOpt);
 		}
 		return gaParameters;
 	}

@@ -1,12 +1,7 @@
 package fjnu.domain.chrom;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 import java.util.Random;
 
 import fjnu.domain.input.GACfgInfo;
@@ -24,19 +19,18 @@ import fjnu.domain.input.GAParameter;
  */
 public class Chromosome {// 染色体
 
-
 	private GAParameter gaParameter = null;
 	private List<StringBuffer> encodes = null;// 保存个体的编码表示
 	// private String encoding;//
 	private Random random = null;
 
-	private int chromesomeLength=0;
-	
-	private List<StringBuffer> codes=null;// 保存编码方案
-	
-	private double fitness=Double.MIN_VALUE;
-	
-	private IChromosomeOpt ChromosomeOpt = null;//染色体操作的实现类，主要用于计算适应值等
+	private int chromesomeLength = 0;
+
+	private List<StringBuffer> codes = null;// 保存编码方案
+
+	private double fitness = Double.MIN_VALUE;
+
+	private IChromosomeOpt ChromosomeOpt = null;// 染色体操作的实现类，主要用于计算适应值等
 
 	/**
 	 * 初始化染色体；首相从外界中获取该染色体的编码方案及其编码长度； 进行染色体的随机生成时，
@@ -49,41 +43,39 @@ public class Chromosome {// 染色体
 	 */
 	public Chromosome() {
 		gaParameter = GACfgInfo.getInstance().getParametersOfGA();
-		this.random = new Random();
 		initialChromosome();
 	}
-	
-	//依赖对象注入，便于测试
-	public Chromosome(Random random,GAParameter parameter){
-		this.gaParameter=parameter;
-		this.random=random;
+
+	// 依赖对象注入，便于测试
+	public Chromosome(Random random, GAParameter parameter) {
+		this.gaParameter = parameter;
+		this.random = random;
 	}
 
-	private void initialChromosome(){
+	private void initialChromosome() {
 		encodes = new ArrayList<StringBuffer>();
 		chromesomeLength = gaParameter.getChromosomeLength();// 染色体长度保存；
 		codes = gaParameter.getEncodes();// 获取编码方案；
-		String  implNameofIChrOpt=gaParameter.getImplClsNmOfIChrOpt();
-		
+		String implNameofIChrOpt = gaParameter.getImplClsNmOfIChrOpt();
+
 		try {
-			ChromosomeOpt=(IChromosomeOpt) Class.forName(implNameofIChrOpt).newInstance();
-		} catch (InstantiationException  e) {
+			ChromosomeOpt = (IChromosomeOpt) Class.forName(implNameofIChrOpt)
+					.newInstance();
+		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 		int encodingLenght = codes.size();// 保存编码字符的长度
 		for (int i = 0; i < chromesomeLength; i++) {
 			int position = random.nextInt(encodingLenght);// 生成的编码方案不能超过，保存编码字符的长度
 			StringBuffer sb = codes.get(position);
 			encodes.add(sb);
 		}
-		
 	}
-	
 
 	/**
 	 * 染色体的变异操作，变异后返回一个染色体；
@@ -101,38 +93,54 @@ public class Chromosome {// 染色体
 	 */
 	public void mutate(int mutateNum) {
 
-		//产生变异位置
-		int encodesLen= encodes.size();
-		int mutatePos=random.nextInt(encodesLen);
-		
-		//产生新编码位
-		int codesLen= codes.size();
-		int  codesPos=random.nextInt(codesLen);
-		
-		//进行变异
+		// 产生变异位置
+		int encodesLen = encodes.size();
+		int mutatePos = random.nextInt(encodesLen);
+
+		// 产生新编码位
+		int codesLen = codes.size();
+		int codesPos = random.nextInt(codesLen);
+
+		// 进行变异
 		encodes.set(mutatePos, codes.get(codesPos));
 	}
 
-    //获取适应值
+	// 获取适应值
 	public double getFitness() {
-		if(fitness==Double.MIN_VALUE){
-			fitness=ChromosomeOpt.calcuFitness(encodes);
+		if (fitness == Double.MIN_VALUE) {
+			fitness = ChromosomeOpt.calcuFitness(encodes);
 		}
 		return fitness;
 	}
 
-	public Chromosome copy(){
-		Chromosome  newChromosome=new Chromosome();
-		
-		List<StringBuffer> newEncodes=new ArrayList<StringBuffer>();
-		
-		int len=encodes.size();
-		for(int i=0;i<len;i++){
-			String tempStr=encodes.get(i).toString();
+	public Chromosome copy() {
+		Chromosome newChromosome = new Chromosome();
+
+		List<StringBuffer> newEncodes = new ArrayList<StringBuffer>();
+
+		int len = encodes.size();
+		for (int i = 0; i < len; i++) {
+			String tempStr = encodes.get(i).toString();
 			newEncodes.add(new StringBuffer(tempStr));
 		}
-		
+
 		return newChromosome;
+	}
+
+	public List<StringBuffer> getEncodes() {
+		return encodes;
+	}
+
+	public void setEncodes(List<StringBuffer> encodes) {
+		this.encodes = encodes;
+	}
+
+	public List<StringBuffer> getCodes() {
+		return codes;
+	}
+
+	public void setCodes(List<StringBuffer> codes) {
+		this.codes = codes;
 	}
 	
 }

@@ -42,8 +42,11 @@ public class GAParameter {
 	 * 染色体操作接口的实现类
 	 */
 	private String implClsNmOfIChrOpt;// 染色体接口的实现类
-	
-	
+
+	/**
+	 * 种群操作接口的实现类
+	 */
+	private String implClsNameOfIPopulationOpt;// 染色体接口的实现类
 
 	public List<StringBuffer> getEncodes() {
 		return encodes;
@@ -51,6 +54,15 @@ public class GAParameter {
 
 	public void setEncodes(List<StringBuffer> encodes) {
 		this.encodes = encodes;
+	}
+
+	public String getImplClsNameOfIPopulationOpt() {
+		return implClsNameOfIPopulationOpt;
+	}
+
+	public void setImplClsNameOfIPopulationOpt(
+			String implClsNameOfIPopulationOpt) {
+		this.implClsNameOfIPopulationOpt = implClsNameOfIPopulationOpt;
 	}
 
 	public String getImplClsNmOfIChrOpt() {

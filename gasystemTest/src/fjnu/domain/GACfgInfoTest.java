@@ -1,4 +1,4 @@
-package fjnu.domain.inputTest;
+package fjnu.domain;
 
 import static org.junit.Assert.*;
 
